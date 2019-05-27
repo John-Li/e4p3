@@ -11,6 +11,14 @@ defmodule GallowWeb.HangmanView do
     button("New Game", to: "/hangman")
   end
 
+  def turn(left, target) when target >= left do
+    "opacity: 1"
+  end
+
+  def turn(_left, _target) do
+    "opacity: 0.1"
+  end
+
   def format_word(letters) do
     letters
     |> Enum.join(" ")

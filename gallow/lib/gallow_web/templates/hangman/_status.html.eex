@@ -1,0 +1,12 @@
+<p>Word so far: <%= format_word(@tally.letters) %></p>
+<p>Turns left: <%= @tally.turns_left %></p>
+
+
+<%= if game_over?(@tally) do %>
+  <%= new_game_button() %>
+<% else %>
+  <%= form_for(@conn, "/hangman", [ as: :make_move, method: :put ], fn form -> %>
+    <%= text_input(form, :guess)%>
+    <%= submit("Make move")%>
+  <% end) %>
+<% end %>
